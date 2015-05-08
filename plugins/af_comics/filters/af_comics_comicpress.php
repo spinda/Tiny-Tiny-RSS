@@ -3,7 +3,7 @@ class Af_Comics_ComicPress extends Af_ComicFilter {
 
 	function supported() {
 		return array("Buni", "Buttersafe", "Whomp!", "Happy Jar", "CSection",
-			"Extra Fabulous Comics");
+			"Extra Fabulous Comics", "Digger", "Housepets!", "Broodhollow");
 	}
 
 	function process(&$article) {
@@ -14,7 +14,10 @@ class Af_Comics_ComicPress extends Af_ComicFilter {
 				strpos($article["guid"], "whompcomic.com") !== FALSE ||
 				strpos($article["guid"], "extrafabulouscomics.com") !== FALSE ||
 				strpos($article["guid"], "happyjar.com") !== FALSE ||
-				strpos($article["guid"], "csectioncomics.com") !== FALSE) {
+				strpos($article["guid"], "csectioncomics.com") !== FALSE ||
+				strpos($article["guid"], "diggercomic.com") !== FALSE ||
+				strpos($article["guid"], "housepetscomic.com") !== FALSE ||
+				strpos($article["guid"], "broodhollow.chainsawsuit.com/?post_type=comic") !== FALSE) {
 
 				// lol at people who block clients by user agent
 				// oh noes my ad revenue Q_Q
