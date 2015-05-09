@@ -1,0 +1,3 @@
+[submodule "plugins/af_lwn"]
+	path = plugins/af_lwn
+	url = https://github.com/spinda/af_lwn.git
