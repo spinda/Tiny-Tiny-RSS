@@ -1,3 +1,32 @@
+This Fork
+=========
+
+This is my personal collection of modifications to [Tiny Tiny
+RSS](http://tt-rss.org). It's here mainly so that I don't have to keep track of
+these changes manually, but there might be some bits in here that someone else
+will find useful. Each individual change is in [its own
+branch](https://github.com/spinda/Tiny-Tiny-RSS/branches) that you can pull
+into your copy of TTRSS.
+
+```
+git add remote spinda https://github.com/spinda/Tiny-Tiny-RSS.git
+git fetch spinda
+git merge spinda/<branch>
+```
+
+The `master` branch also has some [additional
+plugins](https://github.com/spinda/Tiny-Tiny-RSS/blob/master/.gitmodules)
+installed as git submodules. Use
+
+```
+git submodule init
+git submodule update
+```
+
+to set them up and `git submodule update` afterwards to update to their latest
+versions.
+___
+
 Tiny Tiny RSS
 =============
 
