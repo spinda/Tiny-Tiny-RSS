@@ -6,29 +6,21 @@ class Af_Comics_Kevinandkell extends Af_ComicFilter {
 	}
 
 	function process(&$article) {
-		$owner_uid = $article["owner_uid"];
+		$matched = preg_match(
+			'/^(https?:\/\/(www\.)?kevinandkell\.com\/([0-9]+))\/kk([0-9]+)\.html$/',
+			$article["link"], $matches
+		);
 
-		if (strpos($article["link"], "kevinandkell.com") !== FALSE) {
+		if ($matched === 1) {
+			$image_url = htmlspecialchars(
+				$matches[1]."/strips/kk".$matches[3].$matches[4].".jpg"
+			);
 
-				$res = fetch_file_contents($article["link"], false, false, false,
-					 false, false, 0,
-					 "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)");
+			$article["content"] = <<<EOT
+<a href="$image_url"><img alt="Comic Strip" src="$image_url" /></a>
+EOT;
 
-				$doc = new DOMDocument();
-				@$doc->loadHTML($res);
-
-				$basenode = false;
-
-				if ($doc) {
-					$xpath = new DOMXPath($doc);
-					$basenode = $xpath->query('//a[@id="comicstrip"]')->item(0);
-
-					if ($basenode) {
-						$article["content"] = $doc->saveXML($basenode);
-					}
-				}
-
-			 return true;
+			return true;
 		}
 
 		return false;
